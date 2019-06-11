@@ -1,0 +1,35 @@
+{% extends 'libapp/layout.html' %}
+
+{% block title %}
+    Sign up!
+{% endblock title %}
+
+{% block maincontent %}
+    <form method="post" action="{% url 'library:register' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>
+            <input type="text" placeholder="Enter Username" name="username">
+        </p>
+        <p>
+            <input type="password" placeholder="Enter Password" name="password">
+        </p>
+        <p>
+            <label for="">Country</label><br>
+            <select name="country">
+                <option value="HK">Hong Kong</option>
+                <option value="IN">India</option>
+                <option value="USA">USA</option>
+            </select>
+        </p>
+        <p>
+            <label for="">Gender</label>
+            <input type="radio" name="gender" value="M">Male&nbsp;
+            <input type="radio" name="gender" value="F">Female
+        </p>
+        <p>
+            <label for="">Profile Pic</label>
+            <input type="file" name="profile">
+        </p>
+        <input type="submit" value="Register">
+    </form>
+{% endblock maincontent %}

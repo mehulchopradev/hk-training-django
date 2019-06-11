@@ -1,0 +1,19 @@
+{% extends 'libapp/layout.html' %}
+
+{% block title %}
+    Welcome to libmgmt solution
+{% endblock title %}
+
+{% block maincontent %}
+    <form method="post" action="{% url 'library:auth' %}">
+        {% csrf_token %}
+        <p>
+            <input type="text" placeholder="Enter Username" name="username">
+        </p>
+        <p>
+            <input type="password" placeholder="Enter Password" name="password">
+        </p>
+        <input type="submit" value="Login">
+        <a href="{% url 'library:signup' %}">New User ? Sign Up</a>
+    </form>
+{% endblock maincontent %}

@@ -1,0 +1,25 @@
+{% extends 'libapp/layout.html' %}
+
+{% block title %}
+    Book Details
+{% endblock title %}
+
+{% block maincontent %}
+    <h2>{{book.title}}</h2>
+    <i>Price : {{book.price}}</i><br>
+    <i>Pages : {{book.pages}}</i><br>
+
+    <h3>Publication House</h3>
+    <i>Name : {{book.publication.name}}</i>
+    <i>Ratings : {{book.publication.ratings}}</i>
+
+    <h3>Reviews</h3>
+    {% if book.review_set.all %}
+        {% for review in book.review_set.all %}
+            <i>{{review.reviewer}}</i>
+            <p>{{review.description}}</p>
+        {% endfor %}
+    {% else %}
+        <b>No Reviews</b>
+    {% endif %}
+{% endblock maincontent %}

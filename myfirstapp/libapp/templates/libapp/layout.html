@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>
+            {% block title %}
+            {% endblock title %}
+        </title>
+        <link rel="stylesheet" href="{% static 'libapp/css/app.css' %}">
+    </head>
+    <body>
+        <img class="banner" src="{% static 'libapp/images/banner.jpeg' %}">
+        <div class="menu">
+            <a href="{% url 'library:home' %}">Home</a>
+            <a href="">About us</a>
+            <a href="{% url 'library:contactus' %}">Contact us</a>
+            <div class="profile-area">
+                {% if username %}
+                    Welcome {{username}}
+                    <img src="{% url 'library:profilepic' %}" class="profile-pic">
+                    <a href="{% url 'library:logout' %}">Logout</a>
+                {% else %}
+                    Welcome Guest
+                {% endif %}
+            </div>
+        </div>
+        <div class="maincontent">
+            {% block maincontent %}
+            {% endblock maincontent %}
+        </div>
+        <footer>
+            All rights reserved. Copyrighted 2019
+        </footer>
+    </body>
+</html>

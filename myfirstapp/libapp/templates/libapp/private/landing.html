@@ -1,0 +1,35 @@
+{% extends 'libapp/layout.html' %}
+
+{% block title %}
+    Welcome user
+{% endblock title %}
+
+{% block maincontent %}
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Title</td>
+                <td>Price</td>
+                <td>Pages</td>
+                <td>Publication House</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{book.title}}</td>
+                    <td>{{book.price}}</td>
+                    <td>{{book.pages}}</td>
+                    <td>{{book.publication.name}}</td>
+                    <td>
+                        <a href="{% url 'library:bookdetails' book.id %}">Details</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'library:downloadbooks' %}">
+        <button>Download</button>
+    </a>
+{% endblock maincontent %}
